@@ -49,9 +49,11 @@ export default function LoginPage() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      await logIn(smartID, fullname);
+      // const TrimesmartID=smartID.trim()
+      let TrimesmartID = smartID.replaceAll(' ', '');
+      await logIn(TrimesmartID, fullname);
       // ✅ Navigate after successful login
-      localStorage.setItem("ID",smartID)
+      localStorage.setItem("ID",TrimesmartID)
       navigate("/dashboard");
 
       const messageBox = document.getElementById("message-box");
